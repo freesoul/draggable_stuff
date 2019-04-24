@@ -1,0 +1,86 @@
+<html>
+    <!-- <script
+src="https://code.jquery.com/jquery-3.4.0.min.js"
+integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+crossorigin="anonymous"></script> -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name = "viewport" content = "user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Flexisel - A responsive jQuery Carousel</title>
+    <link href="flexisel/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="flexisel/js/jquery.flexisel.js"></script><style>
+.nbs-flexisel-item {
+    line-height: initial;
+    display: block;
+    height: 50px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+
+
+<ul class="jf-tab-slider">
+    <li>
+        <a href="javascript:void(0)" data-dest="tab-1">gtab1</a>
+        <a href="javascript:void(0)" data-dest="tab-2">gtab2</a>
+        <a href="javascript:void(0)" data-dest="tab-3">gtab3</a>
+    </li>
+</ul>
+
+<ul id="some-flexisel">
+    <li id="tab-1">tab1</li>
+    <li id="tab-2">tab2</li>
+    <li id="tab-3">tab3</li>
+</ul>
+
+<script type="text/javascript">
+//touch click helper
+(function ($) {
+    $.fn.tclick = function (onclick) {
+
+        this.bind("touchstart", function (e) { 
+            onclick.call(this, e); 
+            e.stopPropagation(); 
+            e.preventDefault(); 
+        });
+
+        this.bind("click", function (e) { 
+           onclick.call(this, e);  //substitute mousedown event for exact same result as touchstart         
+        });   
+
+        return this;
+    };
+})(jQuery);
+
+$(window).load(function() {
+  $("#some-flexisel").flexisel({
+    visibleItems: 2,
+    itemsToScroll: 2,
+    animationSpeed: 400,
+    infinite: true,
+    draggable: true,
+    responsiveBreakpoints: { 
+      portrait: { 
+        changePoint:480,
+        visibleItems: 1,
+        itemsToScroll: 1
+      }, 
+        landscape: { 
+        changePoint:640,
+        visibleItems: 2,
+        itemsToScroll: 2
+      },
+        tablet: { 
+        changePoint:768,
+        visibleItems: 2,
+        itemsToScroll: 2
+      }
+    }
+  });
+});
+
+</script>
+</body>
+</html>
