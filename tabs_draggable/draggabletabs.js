@@ -1,5 +1,9 @@
+/*
+/   Author: Jean-François Kener   
+/   MIT
+*/
 
-(function ($) {
+(function ($)  {
 
     $.fn.draggabletabs = function (options) {
 
@@ -26,7 +30,7 @@
         
         var methods = {
             init: function() {
-            		if(!(n_switch>0 && n_switch==n_tabs)) return false;
+                if(!(n_switch>0 && n_switch==n_tabs)) return false;
                 return this.each(function () {
                 	methods.initializeItems();
                   methods.initializeListeners();
@@ -48,7 +52,7 @@
             
             switch_to: function(_index){
               let old_index = index;
-            	index = ((_index%n_tabs)+n_tabs)%n_tabs;
+              index = ((_index%n_tabs)+n_tabs)%n_tabs;
               $tabs.eq(old_index).removeClass("jf-active-content").hide();
               $tabs.eq(index).addClass("jf-active-content").show();
               $switches.eq(old_index).removeClass("jf-active-switch");
